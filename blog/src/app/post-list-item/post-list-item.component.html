@@ -1,0 +1,24 @@
+<div class="list-group-item">
+  <div class="header">
+    <h2>{{currentPost.title}}</h2>
+    <p><i>{{currentPost.createdAt | date : "dd/MM/yyyy, HH:mm"}}</i></p>
+  </div>
+  <p>{{currentPost.content}}</p>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <span [ngClass]="{'badge':true,
+       'badge-pill':true,
+       'badge-success': currentPost.loveIts > 0,
+       'badge-danger': currentPost.loveIts < 0,
+       'badge-primary': currentPost.loveIts == 0
+      }">
+        {{currentPost.loveIts}}
+      </span>
+    </div>
+    <div class="col" style="text-align: right">
+      <button class="btn btn-success" (click)="onClickLoveIt()">Love it</button>
+      <button class="btn btn-danger" (click)="onClickDontLoveIt()">Don't love it</button>
+    </div>
+  </div>
+</div>

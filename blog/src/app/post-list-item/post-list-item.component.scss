@@ -1,0 +1,18 @@
+.header{
+    border-bottom: thin solid gray;
+}
+
+.header h2, .header p
+{
+    display: inline;
+}
+.header p
+{
+    float: right;    
+}
+
+.header h2
+{
+    font-weight: 400;
+    color: grey;    
+}

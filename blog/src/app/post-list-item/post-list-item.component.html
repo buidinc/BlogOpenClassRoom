@@ -1,7 +1,14 @@
 <div class="list-group-item">
   <div class="header">
-    <h2>{{currentPost.title}}</h2>
-    <p><i>{{currentPost.createdAt | date : "dd/MM/yyyy, HH:mm"}}</i></p>
+    <div>
+      <h2 style="display: inline-block">{{currentPost.title}}</h2>
+      <div class="btn-delete" (click)="onClickDeletePost()">
+        <i class="align-top fa fa-trash"></i>
+      </div>
+    </div>
+    <p>
+      <i>{{currentPost.createdAt | date : "dd/MM/yyyy, HH:mm"}}</i>
+    </p>
   </div>
   <p>{{currentPost.content}}</p>
   <hr>

@@ -1,18 +1,22 @@
-.header{
-    border-bottom: thin solid gray;
+.header {
+  border-bottom: thin solid gray;
 }
 
-.header h2, .header p
-{
-    display: inline;
+.header h2,
+.header p {
+  display: inline;
 }
-.header p
-{
-    float: right;    
+.header p {
+  float: right;
 }
 
-.header h2
-{
-    font-weight: 400;
-    color: grey;    
+.header h2 {
+  font-weight: 400;
+  color: grey;
+}
+
+.btn-delete {
+  display: inline-block;
+  color: red;
+  cursor: pointer;
 }

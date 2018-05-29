@@ -1,6 +1,8 @@
+import * as firebase from 'firebase';
 export class Post {
-    title: string;
-    content: string;
-    loveIts: number;
-    createdAt: Date = new Date();
+  loveIts = 0;
+  createdAt = firebase.database.ServerValue.TIMESTAMP;
+
+  constructor(public title: string, public content: string) {
+  }
 }

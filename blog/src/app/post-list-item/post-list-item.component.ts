@@ -1,26 +1,42 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Post } from '../post';
+import { PostsService } from '../services/posts.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-post-list-item',
   templateUrl: './post-list-item.component.html',
   styleUrls: ['./post-list-item.component.scss']
 })
-export class PostListItemComponent implements OnInit {
+export class PostListItemComponent implements OnInit, OnDestroy {
+  constructor(private postsService: PostsService) {}
 
-  constructor() { }
+  @Input() currentPost: Post;
+  @Input() index: number;
 
-  @Input()
-  currentPost: Post;
+  postSubscription: Subscription;
 
   ngOnInit() {
+    this.postSubscription = this.postsService.getSinglePost(this.index).subscribe((post: Post) => {
+      this.currentPost = post;
+    });
+  }
+
+  ngOnDestroy() {
+    this.postSubscription.unsubscribe();
   }
 
   onClickLoveIt(): void {
     this.currentPost.loveIts += 1;
+    this.postsService.savePosts();
   }
 
   onClickDontLoveIt(): void {
     this.currentPost.loveIts -= 1;
+    this.postsService.savePosts();
+  }
+
+  onClickDeletePost(): void {
+    this.postsService.removePost(this.currentPost);
   }
 }
